@@ -1,0 +1,106 @@
+{
+	"header": {
+		"about": "About Us",
+		"services": "Services",
+		"prices": "Prices",
+		"portfolio": "Portfolio",
+		"faq": "FAQ",
+		"contacts": "Contacts"
+	},
+	"hero": {
+		"title": "Aura Beauty",
+		"subtitle": "A space of your natural beauty and harmony",
+		"cta": "Call and book"
+	},
+	"about": {
+		"title": "About Us",
+		"text": "Aura Beauty is not just a beauty salon, it's a place where you can relax, rejuvenate, and enhance your unique beauty. We believe in the power of nature and use only the best organic products. Our team of professionals is dedicated to creating an atmosphere of peace and harmony for you, where every procedure becomes a ritual of self-care."
+	},
+	"services": {
+		"title": "Our Services",
+		"cards": [
+			{
+				"title": "Hairdressing",
+				"desc": "Haircuts, styling, coloring, and hair care treatments."
+			},
+			{
+				"title": "Nail Service",
+				"desc": "Manicure, pedicure, polish, and nail art."
+			},
+			{
+				"title": "Facial Cosmetology",
+				"desc": "Cleansing, peels, masks, and anti-aging treatments."
+			},
+			{
+				"title": "Body Care",
+				"desc": "Massages, wraps, and spa rituals for complete relaxation."
+			},
+			{
+				"title": "Makeup & Brows",
+				"desc": "Daytime, evening makeup, brow shaping, and tinting."
+			}
+		]
+	},
+	"prices": {
+		"title": "Price List",
+		"categories": [
+			{
+				"title": "Haircuts & Styling",
+				"items": [
+					{ "name": "Women's Haircut", "price": "from 800 UAH" },
+					{ "name": "Men's Haircut", "price": "from 600 UAH" },
+					{ "name": "Styling", "price": "from 500 UAH" }
+				]
+			},
+			{
+				"title": "Nail Service",
+				"items": [
+					{ "name": "Manicure with polish", "price": "from 700 UAH" },
+					{ "name": "Pedicure with polish", "price": "from 900 UAH" },
+					{ "name": "Nail extensions", "price": "from 1200 UAH" }
+				]
+			},
+			{
+				"title": "Cosmetology",
+				"items": [
+					{ "name": "Facial cleansing", "price": "from 1500 UAH" },
+					{ "name": "Chemical peel", "price": "from 1800 UAH" },
+					{ "name": "Facial massage", "price": "from 900 UAH" }
+				]
+			}
+		]
+	},
+	"portfolio": {
+		"title": "Our Works"
+	},
+	"faq": {
+		"title": "Frequently Asked Questions",
+		"items": [
+			{
+				"q": "Do you use organic cosmetics?",
+				"a": "Yes, we prefer certified organic and natural brands that are safe for your health and the environment."
+			},
+			{
+				"q": "How to prepare for the first visit to a cosmetologist?",
+				"a": "We recommend coming without makeup and having a list of products you use at home. The main thing is to relax and trust the professional."
+			},
+			{
+				"q": "Can I bring children?",
+				"a": "We strive to create a calm atmosphere, so we ask that you leave young children at home so that you and other guests can fully enjoy the procedures."
+			},
+			{
+				"q": "What are the payment methods?",
+				"a": "We accept cash as well as Visa and MasterCard credit cards."
+			}
+		]
+	},
+	"contacts": {
+		"title": "How to find us",
+		"address": "Address: Kyiv, 10 Cozy St.",
+		"phone": "Phone: +38 (099) 123-45-67",
+		"hours": "Working hours: Mon-Sat: 10:00 - 20:00"
+	},
+	"footer": {
+		"copy": "© 2025 Aura Beauty. All rights reserved."
+	}
+}

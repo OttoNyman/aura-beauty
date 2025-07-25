@@ -1,26 +1,26 @@
-@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap");
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Стили для плавной прокрутки */
+html {
+	scroll-behavior: smooth;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Стили для кастомного скроллбара в горизонтальных секциях */
+.horizontal-scroll::-webkit-scrollbar {
+	height: 8px;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.horizontal-scroll::-webkit-scrollbar-track {
+	background: #f1f1f1;
+	border-radius: 10px;
 }
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.horizontal-scroll::-webkit-scrollbar-thumb {
+	background: #b2ac88; /* light-sage */
+	border-radius: 10px;
+}
+.horizontal-scroll::-webkit-scrollbar-thumb:hover {
+	background: #808000; /* muted-olive */
 }
