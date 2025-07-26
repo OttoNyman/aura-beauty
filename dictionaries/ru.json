@@ -102,5 +102,11 @@
 	},
 	"footer": {
 		"copy": "© 2025 Aura Beauty. Все права защищены."
+	},
+	"artMusic": {
+		"artMusicDescription": "Рисуйте символами и создавайте музыку!",
+		"artMusicTitle": "Just fun: Art & Music",
+		"artMusicSwitch": "Сменить тему",
+		"artMusicClear": "Очистить"
 	}
 }
