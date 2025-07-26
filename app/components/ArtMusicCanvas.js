@@ -2,23 +2,49 @@
 
 import React, { useRef, useState } from "react";
 
-// Наборы символов и соответствующие ноты (MIDI)
+// Наборы символов
 const PATTERNS = [
 	{
 		name: "Классика",
 		chars: ["*", "#", "+", "@", "%", "$"],
-		notes: [261.63, 293.66, 329.63, 349.23, 392.0, 440.0], // C, D, E, F, G, A
 	},
 	{
 		name: "Квадраты",
 		chars: ["■", "□", "▪", "▫", "▲", "△"],
-		notes: [220.0, 246.94, 277.18, 311.13, 349.23, 392.0], // A, B, C#, D#, F, G
 	},
 	{
 		name: "Весёлые",
 		chars: ["☺", "☻", "♥", "♦", "♣", "♠"],
-		notes: [261.63, 329.63, 392.0, 523.25, 587.33, 659.25], // C, E, G, C', D', E'
 	},
+];
+
+// Happy Birthday to You (C C D C F E ...)
+const HAPPY_BIRTHDAY_NOTES = [
+	261.63,
+	261.63,
+	293.66,
+	261.63,
+	349.23,
+	329.63, // C C D C F E
+	261.63,
+	261.63,
+	293.66,
+	261.63,
+	392.0,
+	349.23, // C C D C G F
+	261.63,
+	261.63,
+	523.25,
+	440.0,
+	349.23,
+	329.63,
+	293.66, // C C C' A F E D
+	466.16,
+	466.16,
+	440.0,
+	349.23,
+	392.0,
+	349.23, // Bb Bb A F G F
 ];
 
 const CANVAS_ROWS = 16;
@@ -46,15 +72,18 @@ export default function ArtMusicCanvas({ dict }) {
 	const [drawing, setDrawing] = useState(false);
 	const [charIdx, setCharIdx] = useState(0);
 	const canvasRef = useRef(null);
+	const tableRef = useRef(null);
 
 	const pattern = PATTERNS[patternIdx];
+	const [noteIdx, setNoteIdx] = useState(0);
 
 	function handleDraw(row, col) {
 		const newCanvas = canvas.map((r) => [...r]);
 		newCanvas[row][col] = pattern.chars[charIdx];
 		setCanvas(newCanvas);
-		playNote(pattern.notes[charIdx]);
+		playNote(HAPPY_BIRTHDAY_NOTES[noteIdx]);
 		setCharIdx((prev) => (prev + 1) % pattern.chars.length);
+		setNoteIdx((prev) => (prev + 1) % HAPPY_BIRTHDAY_NOTES.length);
 	}
 
 	function handlePointerDown(e) {
@@ -74,7 +103,7 @@ export default function ArtMusicCanvas({ dict }) {
 	}
 
 	function getCellFromEvent(e) {
-		const rect = canvasRef.current.getBoundingClientRect();
+		const rect = tableRef.current.getBoundingClientRect();
 		const clientX = e.touches ? e.touches[0].clientX : e.clientX;
 		const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 		const x = clientX - rect.left;
@@ -94,6 +123,7 @@ export default function ArtMusicCanvas({ dict }) {
 				.map(() => Array(CANVAS_COLS).fill(" "))
 		);
 		setCharIdx(0);
+		setNoteIdx(0);
 	}
 
 	function handleSwitchPattern() {
@@ -104,23 +134,23 @@ export default function ArtMusicCanvas({ dict }) {
 	return (
 		<section className="py-10 sm:py-16 bg-white">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-		<h2 className="font-playfair text-3xl sm:text-4xl font-bold text-muted-olive text-center mb-6">
-		  {dict?.artMusicTitle}
-		</h2>
-		<div className="flex justify-center gap-4 mb-4">
-		  <button
-			onClick={handleSwitchPattern}
-			className="bg-terracotta text-white px-4 py-2 rounded shadow hover:bg-opacity-90"
-		  >
-			{dict?.artMusicSwitch}: {pattern.name}
-		  </button>
-		  <button
-			onClick={handleClear}
-			className="bg-muted-olive text-white px-4 py-2 rounded shadow hover:bg-opacity-90"
-		  >
-			{dict?.artMusicClear}
-		  </button>
-		</div>
+				<h2 className="font-playfair text-3xl sm:text-4xl font-bold text-muted-olive text-center mb-6">
+					{dict?.artMusicTitle}
+				</h2>
+				<div className="flex justify-center gap-4 mb-4">
+					<button
+						onClick={handleSwitchPattern}
+						className="bg-terracotta text-white px-4 py-2 rounded shadow hover:bg-opacity-90"
+					>
+						{dict?.artMusicSwitch}: {pattern.name}
+					</button>
+					<button
+						onClick={handleClear}
+						className="bg-muted-olive text-white px-4 py-2 rounded shadow hover:bg-opacity-90"
+					>
+						{dict?.artMusicClear}
+					</button>
+				</div>
 				<div
 					ref={canvasRef}
 					className="bg-gray-100 rounded-lg shadow-lg mx-auto"
@@ -142,6 +172,7 @@ export default function ArtMusicCanvas({ dict }) {
 					onTouchMove={handlePointerMove}
 				>
 					<table
+						ref={tableRef}
 						style={{
 							width: "100%",
 							height: "100%",
@@ -155,8 +186,12 @@ export default function ArtMusicCanvas({ dict }) {
 										<td
 											key={colIdx}
 											style={{
-												width: `${100 / CANVAS_COLS}%`,
-												height: `${100 / CANVAS_ROWS}%`,
+												width: "32px",
+												height: "32px",
+												minWidth: "32px",
+												minHeight: "32px",
+												maxWidth: "32px",
+												maxHeight: "32px",
 												textAlign: "center",
 												verticalAlign: "middle",
 												padding: 0,

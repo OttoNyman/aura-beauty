@@ -7,7 +7,7 @@ import Portfolio from "../components/Portfolio";
 import FAQ from "../components/FAQ";
 import Contacts from "../components/Contacts";
 import Footer from "../components/Footer";
-import ArtMusicCanvas from "../components/AsciiArtMusicCanvas";
+import ArtMusicCanvas from "../components/ArtMusicCanvas";
 
 // Динамический импорт словаря для серверного компонента
 const dictionaries = {
